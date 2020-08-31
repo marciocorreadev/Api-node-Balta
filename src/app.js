@@ -5,13 +5,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const config = require('./config');
 
 const app = express();
 const router = express.Router();
 
-mongoose.connect(
-  'mongodb+srv://marcio:marcio@cluster0.kiaxr.azure.mongodb.net/nodestr?retryWrites=true&w=majority'
-);
+mongoose.connect(config.connectionString);
 
 const Product = require('./models/product.js');
 const Costumer = require('./models/costumer.js');
