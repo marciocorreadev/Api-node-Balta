@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const Schemma = mongoose.Schema;
 
 const schema = new Schemma({
-  costumer: {
+  customer: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Customer',
   },

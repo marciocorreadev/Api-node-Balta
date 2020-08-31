@@ -4,7 +4,7 @@
 
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/costomer-controller');
+const controller = require('../controllers/order-controler');
 
 router.post('/', controller.post);
 router.get('/', controller.get);

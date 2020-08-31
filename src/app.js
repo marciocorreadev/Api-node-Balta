@@ -23,9 +23,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 const index = require('./routes/index-route');
 const product = require('./routes/product-route');
 const customer = require('./routes/customer-route');
+const order = require('./routes/order-route');
 
 app.use('/', index);
 app.use('/products', product);
 app.use('/customer', customer);
+app.use('/order', order);
 
 module.exports = app;
