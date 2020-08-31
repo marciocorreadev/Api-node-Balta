@@ -14,14 +14,18 @@ mongoose.connect(
 );
 
 const Product = require('./models/product.js');
+const Costumer = require('./models/costumer.js');
+const Order = require('./models/order.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const index = require('./routes/index-route');
 const product = require('./routes/product-route');
+const customer = require('./routes/customer-route');
 
 app.use('/', index);
 app.use('/products', product);
+app.use('/customer', customer);
 
 module.exports = app;
