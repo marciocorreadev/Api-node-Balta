@@ -5,13 +5,14 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/product-controller');
+const authService = require('../services/auth-service');
 
-router.put('/:id', controller.put);
+router.put('/:id', authService.authorize, controller.put);
 router.get('/', controller.get);
 router.get('/:slug', controller.getBySlug);
 router.get('/admin/:id', controller.getById);
 router.get('/tags/:tag', controller.getByTag);
-router.post('/', controller.post);
-router.delete('/', controller.delete);
+router.post('/', authService.authorize, controller.post);
+router.delete('/', authService.authorize, controller.delete);
 
 module.exports = router;

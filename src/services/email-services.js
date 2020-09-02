@@ -3,8 +3,27 @@
 'use strict';
 
 const config = require('../config');
-const sendGrid = require('sendGrid')(config.sendgridKey);
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(config.sendgridKey);
 
-exports.send = async (to, subject, html) => {
-  sendGrid.send({ to, subject, html, from: 'msc@outlook.com.br' });
+exports.send = async (to, subject, body) => {
+  const msg = {
+    to: to,
+    from: 'msc@outlook.com.br', // Use the email address or domain you verified above
+    subject: subject,
+    text: 'Bem vindo ao curso de node!',
+    html: body,
+  };
+  sgMail.send(msg).then(
+    () => {
+      console.log('email enviado com sucesso');
+    },
+    (error) => {
+      console.error(error);
+
+      if (error.response) {
+        console.error(error.response.body);
+      }
+    }
+  );
 };
